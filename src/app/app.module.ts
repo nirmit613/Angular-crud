@@ -7,20 +7,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateRegistrationComponent } from './create-registration/create-registration.component';
 import { CreateListComponent } from './create-list/create-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { NgToastModule } from 'ng-angular-popup';
+import { NgConfirmModule } from 'ng-confirm-box';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateRegistrationComponent,
     CreateListComponent,
-    UserDetailComponent
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgToastModule,
+    NgConfirmModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
