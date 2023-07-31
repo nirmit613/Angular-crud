@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateRegistrationComponent } from './create-registration/create-registration.component';
 import { CreateListComponent } from './create-list/create-list.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateRegistrationComponent,
-    CreateListComponent
+    CreateListComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
