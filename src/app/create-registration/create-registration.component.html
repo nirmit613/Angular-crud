@@ -2,52 +2,93 @@
   <img src="assets/logo.png" alt="" width="160px" />
 </div>
 <div class="registration-form m-3 p-4">
-  <form>
+  <form [formGroup]="registrationForm">
     <div class="row">
       <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>First Name</mat-label>
-          <input matInput placeholder="FirstName" />
+          <input formControlName="firstName" matInput placeholder="FirstName" />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </div>
       <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>Last Name</mat-label>
-          <input matInput placeholder="LastName" />
+          <input formControlName="lastName" matInput placeholder="LastName" />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </div>
       <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="Email" />
+          <input formControlName="email" matInput placeholder="Email" />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </div>
       <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>Mobile</mat-label>
-          <input matInput placeholder="Mobile" />
+          <input formControlName="mobile" matInput placeholder="Mobile" />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
       </div>
       <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>Weight</mat-label>
-          <input matInput type="number" placeholder="Weight" min="1" />
+          <input
+            formControlName="weight"
+            matInput
+            type="number"
+            placeholder="Weight"
+            min="1"
+          />
           <mat-icon matSuffix>line_weight</mat-icon>
           <mat-hint>Unit is in Kg</mat-hint>
         </mat-form-field>
       </div>
       <div class="col-md-6">
         <mat-form-field appearance="outline">
-          <mat-label>Mobile</mat-label>
-          <input matInput placeholder="Mobile" />
+          <mat-label>Height</mat-label>
+          <input
+            [readonly]="!this.registrationForm.value?.weight"
+            formControlName="height"
+            matInput
+            placeholder="height"
+          />
           <mat-icon matSuffix
             ><i class="fa fa-text-height" aria-hidden="true"></i
           ></mat-icon>
           <mat-hint>Unit is in meters</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>BMI</mat-label>
+          <input
+            readonly
+            type="number"
+            formControlName="bmi"
+            matInput
+            placeholder="bmi"
+          />
+          <mat-icon matSuffix
+            ><i class="fa fa-sort-numeric-desc" aria-hidden="true"></i
+          ></mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>BMI Result</mat-label>
+          <input
+            readonly
+            type="number"
+            formControlName="bmiResult"
+            matInput
+            placeholder="bmi Result"
+          />
+          <mat-icon matSuffix
+            ><i class="fa fa-check" aria-hidden="true"></i
+          ></mat-icon>
         </mat-form-field>
       </div>
       <div class="col-md-6 mt-3">
@@ -55,6 +96,7 @@
         <mat-radio-group
           aria-labelledby="example-radio-group-label"
           class="example-radio-group"
+          formControlName="requirTrainer"
         >
           <mat-radio-button
             class="example-radio-button"
@@ -71,6 +113,7 @@
         <mat-radio-group
           aria-labelledby="example-radio-group-label"
           class="example-radio-group"
+          formControlName="gender"
         >
           <mat-radio-button
             class="example-radio-button"
@@ -95,7 +138,7 @@
       <div class="col-md-6 mt-4">
         <mat-form-field appearance="outline">
           <mat-label>Which of the following is important to you? </mat-label>
-          <mat-select multiple>
+          <mat-select multiple formControlName="important">
             <mat-option
               *ngFor="let important of importantList"
               [value]="important"
@@ -110,6 +153,7 @@
         <mat-radio-group
           aria-labelledby="example-radio-group-label"
           class="example-radio-group"
+          formControlName="haveGymBefore"
         >
           <mat-radio-button
             class="example-radio-button"
@@ -124,7 +168,11 @@
       <div class="col-md-6">
         <mat-form-field appearance="outline">
           <mat-label>Enquiry date</mat-label>
-          <input matInput [matDatepicker]="picker" />
+          <input
+            formControlName="enquiryDate"
+            matInput
+            [matDatepicker]="picker"
+          />
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle
             matIconSuffix
@@ -134,5 +182,8 @@
         </mat-form-field>
       </div>
     </div>
+    <button class="mt-4 text-center" (click)="submit()" mat-raised-button color="accent">
+      Submit
+    </button>
   </form>
 </div>
