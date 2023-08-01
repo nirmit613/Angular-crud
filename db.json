@@ -10,8 +10,7 @@
       "bmi": 20.077334919690664,
       "bmiResult": "Normal",
       "gender": "Male",
-      "requirTrainer": "Yes",
-      "package": "",
+      "package": "Quarterly",
       "important": [
         "Energy and Endurance",
         "Fitness"
@@ -19,6 +18,26 @@
       "haveGymBefore": "No",
       "enquiryDate": "2023-07-31T18:30:00.000Z",
       "id": 1
+    },
+    {
+      "firstName": "Heet",
+      "lastName": "Patel",
+      "email": "heet@gmail.com",
+      "mobile": "636352414",
+      "weight": 78,
+      "height": "1.78",
+      "bmi": 24.61810377477591,
+      "bmiResult": "Normal",
+      "gender": "Male",
+      "requireTrainer": "Yes",
+      "package": "Yearly",
+      "important": [
+        "Building Lean muscle",
+        "Fitness"
+      ],
+      "haveGymBefore": "Yes",
+      "enquiryDate": "2023-07-31T18:30:00.000Z",
+      "id": 2
     }
   ]
 }

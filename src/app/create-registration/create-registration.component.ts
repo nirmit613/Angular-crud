@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiService } from '../sevices/api.service';
 import { NgToastService } from 'ng-angular-popup';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-create-registration',
@@ -12,7 +14,9 @@ export class CreateRegistrationComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private api: ApiService,
-    private toastService: NgToastService
+    private toastService: NgToastService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
@@ -25,7 +29,7 @@ export class CreateRegistrationComponent implements OnInit {
       bmi: [''],
       bmiResult: [''],
       gender: [''],
-      requirTrainer: [''],
+      requireTrainer: [''],
       package: [''],
       important: [''],
       haveGymBefore: [''],
@@ -35,8 +39,17 @@ export class CreateRegistrationComponent implements OnInit {
     this.registrationForm.controls['height'].valueChanges.subscribe((res) => {
       this.calculateBmi(res);
     });
-  }
 
+    this.activatedRoute.params.subscribe((res) => {
+      this.userIdToUpdate = res['id'];
+      this.api.getRegisteredUserId(this.userIdToUpdate).subscribe((res) => {
+        this.isUpdate = true;
+        this.fillFormToUpdate(res);
+      });
+    });
+  }
+  public isUpdate: boolean = false;
+  public userIdToUpdate!: number;
   public packages: string[] = ['Monthly', 'Quarterly', 'Yearly'];
   public Genders: string[] = ['Male', 'Female'];
   public importantList: string[] = [
@@ -54,10 +67,23 @@ export class CreateRegistrationComponent implements OnInit {
       this.toastService.success({
         detail: 'Success',
         summary: 'Enquiry added',
-        duration: 5000,
+        duration: 4000,
       });
       this.registrationForm.reset();
     });
+  }
+  public update() {
+    this.api
+      .updateRegisterUser(this.registrationForm.value, this.userIdToUpdate)
+      .subscribe((res) => {
+        this.toastService.success({
+          detail: 'Success',
+          summary: 'Enquiry Updated',
+          duration: 4000,
+        });
+        this.registrationForm.reset();
+        this.router.navigate(['list']);
+      });
   }
 
   public calculateBmi(heightValue: number) {
@@ -80,5 +106,23 @@ export class CreateRegistrationComponent implements OnInit {
         this.registrationForm.controls['bmiResult'].patchValue('Obese');
         break;
     }
+  }
+  public fillFormToUpdate(user: User) {
+    this.registrationForm.patchValue({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      mobile: user.mobile,
+      weight: user.weight,
+      height: user.height,
+      bmi: user.bmi,
+      bmiResult: user.bmiResult,
+      gender: user.gender,
+      requireTrainer: user.requireTrainer,
+      package: user.package,
+      important: user.important,
+      haveGymBefore: user.haveGymBefore,
+      enquiryDate: user.enquiryDate,
+    });
   }
 }

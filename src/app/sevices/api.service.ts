@@ -12,7 +12,7 @@ export class ApiService {
     return this.http.post<User>(`${this.baseUrl}`, registerObj);
   }
   public getRegisteredUser() {
-    return this.http.get<User>(`${this.baseUrl}`);
+    return this.http.get<User[]>(`${this.baseUrl}`);
   }
   public updateRegisterUser(registerObj: User, id: number) {
     return this.http.put<User>(`${this.baseUrl}/${id}`, registerObj);

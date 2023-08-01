@@ -96,7 +96,7 @@
         <mat-radio-group
           aria-labelledby="example-radio-group-label"
           class="example-radio-group"
-          formControlName="requirTrainer"
+          formControlName="requireTrainer"
         >
           <mat-radio-button
             class="example-radio-button"
@@ -128,7 +128,7 @@
       <div class="col-md-6 mt-4">
         <mat-form-field appearance="outline">
           <mat-label>Select Package</mat-label>
-          <mat-select>
+          <mat-select formControlName="package">
             <mat-option *ngFor="let package of packages" [value]="package">
               {{ package }}
             </mat-option>
@@ -183,12 +183,22 @@
       </div>
     </div>
     <button
+      *ngIf="!isUpdate"
       class="mt-4 text-center"
       (click)="submit()"
       mat-raised-button
       color="accent"
     >
       Submit
+    </button>
+    <button
+      *ngIf="isUpdate"
+      class="mt-4 text-center"
+      (click)="update()"
+      mat-raised-button
+      color="accent"
+    >
+      Update
     </button>
   </form>
 </div>
