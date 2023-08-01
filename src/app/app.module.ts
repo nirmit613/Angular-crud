@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateRegistrationComponent } from './create-registration/create-registration.component';
 import { CreateListComponent } from './create-list/create-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import { NgToastModule } from 'ng-angular-popup';
 import { NgConfirmModule } from 'ng-confirm-box';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -20,6 +19,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgToastModule } from 'ng-angular-popup';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    HttpClientModule,
+  ],
+  exports: [
+    CreateRegistrationComponent,
+    CreateListComponent,
+    UserDetailComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

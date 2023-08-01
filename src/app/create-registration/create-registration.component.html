@@ -81,7 +81,7 @@
           <mat-label>BMI Result</mat-label>
           <input
             readonly
-            type="number"
+            type="text"
             formControlName="bmiResult"
             matInput
             placeholder="bmi Result"
@@ -182,7 +182,12 @@
         </mat-form-field>
       </div>
     </div>
-    <button class="mt-4 text-center" (click)="submit()" mat-raised-button color="accent">
+    <button
+      class="mt-4 text-center"
+      (click)="submit()"
+      mat-raised-button
+      color="accent"
+    >
       Submit
     </button>
   </form>

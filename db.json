@@ -1,0 +1,24 @@
+{
+  "enquiry": [
+    {
+      "firstName": "Nirmit",
+      "lastName": "Valand",
+      "email": "nirmit@gmail.com",
+      "mobile": "9737972219",
+      "weight": 54,
+      "height": "1.64",
+      "bmi": 20.077334919690664,
+      "bmiResult": "Normal",
+      "gender": "Male",
+      "requirTrainer": "Yes",
+      "package": "",
+      "important": [
+        "Energy and Endurance",
+        "Fitness"
+      ],
+      "haveGymBefore": "No",
+      "enquiryDate": "2023-07-31T18:30:00.000Z",
+      "id": 1
+    }
+  ]
+}
